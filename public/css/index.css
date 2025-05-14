@@ -1,0 +1,458 @@
+*, *::after,*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000000;
+    background-image: url('../img/Paisagem.jpg');
+    background-size: 1350px 600px;
+    background-repeat: no-repeat;
+}
+
+.bg {
+    width: 430px;
+    height: 480px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bg .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(#204bb8, #7eb0e5);
+    left: -80px; top: -80px;
+    filter: blur(10px);
+}
+
+.shape:last-child {
+    background: linear-gradient(#d08b31, #af7113); /* Gradiente de cor */
+    right: -30px; bottom: -80px; /* Posição relativa à posição do fundo */
+    filter: blur(10px); /* Aplica desfoque à forma */
+}
+
+.div1 * {
+    font-family: "Poppins" sans-serif; /* Define a fonte como Poppins (com fonte fallback) */
+    color: #ffffff; /* Define a cor do texto como branca */
+    letter-spacing: 0.6px; /* Adiciona um pequeno espaçamento entre as letras */
+    outline: none; /* Remove a borda de foco (outline) nos campos ao clicar */
+    border: none; /* Remove a borda padrão dos elementos */
+}
+
+/* Estilos para o próprio formulário */
+.div1 {
+    background-color: rgba(255, 255, 255, 0.13); /* Cor de fundo semitransparente (branco com opacidade) */
+    height: 525px; /* Altura fixa do formulário */
+    width: 1000px; /* Largura fixa do formulário */
+    backdrop-filter: blur(10px); /* Aplica um desfoque no fundo do formulário */
+    position: absolute; /* Coloca o formulário de forma absoluta na tela */
+    top: 50%; /* Posiciona o formulário no meio da tela verticalmente */
+    left: 50%; /* Posiciona o formulário no meio da tela horizontalmente */
+    /* Ajusta a posição do formulário para que ele esteja perfeitamente centralizado */
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Borda fina e transparente ao redor do formulário */
+    box-shadow: 0 0 35px rgba(8, 7, 16, 0.6); /* Adiciona uma sombra suave ao redor do formulário */
+    padding: 50px 35px; /* Adiciona espaçamento interno no formulário */
+    border-radius: 10px; /* Bordas arredondadas no formulário */
+}
+
+.div1 .header {
+    position: fixed; /* Fixa o cabeçalho no topo da página, mantendo-o visível durante o rolar da página */
+    top: 0; /* Fixa o cabeçalho no topo */
+    left: 0; /* Fixa o cabeçalho na esquerda */
+    width: 1000px; /* O cabeçalho ocupa toda a largura da página */
+    padding: 20px 100px; /* Espaçamento interno do cabeçalho */
+    display: flex; /* Usado para alinhar os itens dentro do cabeçalho de forma flexível */
+    justify-content: space-between; /* Alinha o logo à esquerda e a navegação à direita */
+    align-items: center; /* Alinha verticalmente os itens do cabeçalho */
+    z-index: 100; /* Define a camada do cabeçalho, garantindo que ele fique sobre outros elementos */
+}
+
+.div1 .logo {
+    color: #fff; /* Cor branca para o texto do logo */
+    font-size: 25px; /* Tamanho da fonte */
+    text-decoration: none; /* Remove o sublinhado do link */
+    font-weight: 600; /* Peso da fonte */
+    cursor: default; /* O cursor fica como o padrão, não indica que o logo é clicável */
+    margin-left: -225px;
+}
+
+.div1 .icon1{
+    max-height: 35px;
+    margin-left: -60px;
+}
+
+.div1 .navbar a {
+    color: #fff; /* Cor branca para os links */
+    font-size: 18px; /* Tamanho da fonte */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-left: 35px; /* Espaçamento entre os links */
+    transition: 0.3s; /* Transição suave para efeitos de hover */
+}
+
+.div1 .navbar a:hover {
+    color: #f00; /* Quando o link é hover, a cor muda para vermelho */
+}
+
+.div1 #menu-icon {
+    font-size: 36px; /* Tamanho grande para o ícone */
+    color: #fff; /* Cor branca para o ícone */
+    display: none; /* O ícone de menu está oculto por padrão */
+}
+
+.divDinheiro {
+    display: flex;
+    align-items: center;
+    margin-top: 75px;
+    margin-left: 50px;
+}
+
+.divDinheiro .icon2 {
+    margin-top: -5px;
+}
+
+/* Estilizando os parágrafos <p> */
+.divDinheiro .text1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 8px;
+    color: mediumseagreen;
+    text-align: left;
+}
+
+.div1 .text2, .div1 .text3 {
+    font-family: 'Arial', sans-serif;
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 50px;
+}
+
+.div1 .text4{
+    margin-top: 20px;
+}
+
+.div1 .text4, .div1 .text5, .div1 .text6, .divFinal .text7, .divFinal .link2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: white;
+    text-align: left;
+    margin-left: 50px;
+}
+
+
+.divFinal{
+    display: flex;
+    align-items: center;
+    margin-top: 75px;
+}
+
+.divFinal .link2 {
+    margin-left: 4px;
+    color: violet;
+}
+
+.divLinks {
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+    margin-left: 50px;
+}
+
+/* Estilizando os botões <button> */
+.divLinks .btn1 {
+    padding: 12px 30px;
+    background-color: #3498db;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+.divLinks .btn1:hover {
+    background-color: #2980b9;
+}
+
+.divLinks .link1 {
+    padding: 12px 30px;
+    color: white;
+    font-size: 1rem;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.divLinks .icon3 {
+    max-height: 12px;
+    margin-left: -35px;
+}
+
+.div2 {
+    background-color: rgba(255, 255, 255, 0.13); /* Cor de fundo semitransparente (branco com opacidade) */
+    height: 155px; /* Altura fixa do formulário */
+    width: 250px; /* Largura fixa do formulário */
+    backdrop-filter: blur(10px); /* Aplica um desfoque no fundo do formulário */
+    position: relative;
+    top: 50%; /* Posiciona o formulário no meio da tela verticalmente */
+    left: 50%; /* Posiciona o formulário no meio da tela horizontalmente */
+    /* Ajusta a posição do formulário para que ele esteja perfeitamente centralizado */
+    transform: translate(-50%, -50%) rotate(-15deg);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Borda fina e transparente ao redor do formulário */
+    box-shadow: 0 0 35px rgba(8, 7, 16, 0.6); /* Adiciona uma sombra suave ao redor do formulário */
+    padding: 50px 35px; /* Adiciona espaçamento interno no formulário */
+    border-radius: 15px; /* Bordas arredondadas no formulário */
+    margin-top: 410px;
+    margin-left: 230px;
+    transition: transform 0.1s ease;
+}
+
+.div2:hover {
+    animation: tremor 0.3s linear infinite;
+}
+
+/* Animação de tremor */
+@keyframes tremor {
+    0% { transform: translate(-50%, -50%) rotate(15deg); }
+    25% { transform: translate(-50%, -50%) rotate(10deg); }
+    50% { transform: translate(-50%, -50%) rotate(20deg); }
+    75% { transform: translate(-50%, -50%) rotate(10deg); }
+    100% { transform: translate(-50%, -50%) rotate(15deg); }
+}
+
+.div2 img {
+    position: absolute;
+    margin-bottom: 10px;
+}
+
+.div2 img:nth-child(1) { /* Primeiro ícone (chip) */
+    max-width: 27px; /* Tamanho máximo da imagem */
+    top: 20px;
+    left: 20px; /* Posiciona no canto superior esquerdo */
+}
+
+.div2 img:nth-child(2) { /* Segundo ícone (Visa) */
+    max-width: 47px; /* Tamanho máximo da imagem */
+    top: 20px;
+    right: 20px; /* Posiciona no canto superior direito */
+}
+
+.div2 p {
+    color: white;
+    position: absolute;
+}
+
+.div2 .card-number {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 2px;
+    top: 65px;
+    left: 10px;
+}
+
+.div2 .card-label {
+    font-size: 7px;
+    text-transform: uppercase;
+    bottom: 40px;
+    left: 10px;
+}
+
+
+.div2 .expiration-label {
+    font-size: 7px;
+    text-transform: uppercase;
+    bottom: 40px;
+    right: 13px;
+}
+
+.div2 .card-holder {
+    font-size: 12px;
+    bottom: 20px; /* Posiciona o nome do titular no canto inferior esquerdo */
+    left: 10px;
+}
+
+.div2 .expiration-date {
+    font-size: 12px;
+    bottom: 20px; /* Posiciona a data de expiração no canto inferior direito */
+    right: 10px;
+}
+
+.div3 {
+    background-color: rgba(255, 255, 255, 0.13); /* Cor de fundo semitransparente (branco com opacidade) */
+    height: 199px; /* Altura fixa do formulário */
+    width: 320px; /* Largura fixa do formulário */
+    backdrop-filter: blur(10px); /* Aplica um desfoque no fundo do formulário */
+    position: relative;
+    top: 50%; /* Posiciona o formulário no meio da tela verticalmente */
+    left: 50%; /* Posiciona o formulário no meio da tela horizontalmente */
+    /* Ajusta a posição do formulário para que ele esteja perfeitamente centralizado */
+    transform: translate(-50%, -50%) rotate(15deg);
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Borda fina e transparente ao redor do formulário */
+    box-shadow: 0 0 35px rgba(8, 7, 16, 0.6); /* Adiciona uma sombra suave ao redor do formulário */
+    padding: 50px 35px; /* Adiciona espaçamento interno no formulário */
+    border-radius: 15px; /* Bordas arredondadas no formulário */
+    margin-top: -300px;
+    margin-left: 250px;
+    transition: transform 0.1s ease;
+}
+
+.div3:hover {
+    animation: tremor 0.3s linear infinite;
+}
+
+.div3 img {
+    position: absolute;
+    margin-bottom: 10px;
+}
+
+.div3 img:nth-child(1) { /* Primeiro ícone (chip) */
+    max-width: 35px; /* Tamanho máximo da imagem */
+    top: 20px;
+    left: 20px; /* Posiciona no canto superior esquerdo */
+}
+
+.div3 img:nth-child(2) { /* Segundo ícone (Visa) */
+    max-width: 60px; /* Tamanho máximo da imagem */
+    top: 20px;
+    right: 20px; /* Posiciona no canto superior direito */
+}
+
+.div3 p {
+    color: white;
+    position: absolute;
+}
+
+.div3 .card-number {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+    top: 80px;
+    left: 10px;
+}
+
+.div3 .card-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    bottom: 45px;
+    left: 10px;
+}
+
+
+.div3 .expiration-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    bottom: 45px;
+    right: 13px;
+}
+
+.div3 .card-holder {
+    font-size: 16px;
+    bottom: 20px; /* Posiciona o nome do titular no canto inferior esquerdo */
+    left: 10px;
+}
+
+.div3 .expiration-date {
+    font-size: 16px;
+    bottom: 20px; /* Posiciona a data de expiração no canto inferior direito */
+    right: 10px;
+}
+
+/* BREAKPOINTS 
+Quando a largura da tela for menor que 992px (geralmente tablets), o padding do cabeçalho é ajustado para não ficar 
+com muito espaço em torno do conteúdo.*/
+@media (max-width: 992px) and (min-width: 769px) {
+    .div1 {
+        transform: scale(0.75);
+        margin-top: -300px;
+        margin-left: -500px;
+    }
+
+    .divCartoes {
+        transform: scale(0.8);
+        margin-top: -60px;
+    }
+}
+/* Para telas pequenas (menor que 768px), o código faz o seguinte:
+O ícone de menu (provavelmente um ícone de hambúrguer) aparece.
+A navbar é inicialmente ocultada e será exibida quando a classe active for adicionada ao elemento.
+A nav-bg é usada para criar um fundo desfoque atrás da navbar, também oculto inicialmente e visível quando a classe 
+active for adicionada. */
+@media (max-width: 768px) {
+    .div1{
+        top: 50%; /* Posiciona o formulário no meio da tela verticalmente */
+        left: 50%; /* Posiciona o formulário no meio da tela horizontalmente */
+        height: 950px; /* Altura fixa do formulário */
+        width: 450px; /* Largura fixa do formulário */
+        margin-top: 200px;
+    }
+    .div1 #menu-icon {
+      display: block; /* O ícone de menu aparece em telas menores */
+      position: absolute; /* Posição absoluta em relação ao formulário */
+      margin-left: 285px;
+    }
+    .div1 .navbar {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      padding: 0.5rem 4%;
+      display: none; /* Esconde a navbar inicialmente */
+    }
+    .div1 .navbar.active {
+      /* Mostra a navbar quando a classe 'active' é adicionada.
+      A propriedade display: block; altera a exibição do elemento para um elemento de bloco. Elementos de bloco 
+      geralmente ocupam toda a largura disponível e começam em uma nova linha.
+      Nesse caso, quando a classe active é adicionada à navbar, ela passa a ser exibida como um elemento de bloco, 
+      ou seja, o menu de navegação será mostrado na página.*/
+      display: block;
+    }
+    .div1 .navbar a {
+      display: block;
+      margin: 1.5rem 0;
+    }
+    .div1 .nav-bg {
+      position: absolute;
+      top: 79px;
+      left: 0;
+      width: 100%;
+      height: 295px;
+      background: rgba(255, 255, 255, 0.1);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      z-index: 99;
+      display: none; /* Esconde o fundo da navbar inicialmente */
+    }
+    .nav-bg.active {
+      display: block; /* Mostra o fundo da navbar quando a classe 'active' é adicionada */
+    }
+    .div1 .logo {
+        display: none;
+    }
+
+    .divPrincipal {
+        margin-top: 360px;
+    }
+
+    .divCartoes {
+        transform: scale(0.8);
+        margin-top: -110px;
+        margin-left: -375px;
+    }
+
+    /* Define a classe 'hidden' para ocultar os elementos */
+    .hidden {
+        display: none;
+    }
+  
+}

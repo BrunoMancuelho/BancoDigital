@@ -1,0 +1,32 @@
+/* * (o seletor universal):
+Aplica as regras a todos os elementos da página.
+O * seleciona todos os elementos HTML, como <div>, <p>, <h1>, etc.
+*::after e *::before:
+Estes seletores atingem os pseudo-elementos ::after e ::before de todos os elementos.
+::after é um pseudo-elemento que é inserido após o conteúdo de um elemento, e ::before é inserido antes do conteúdo 
+de um elemento.
+Usando *::after e *::before, as regras serão aplicadas a todos os pseudo-elementos. */
+*,
+*::after,
+*::before {
+    /* Remove qualquer espaçamento interno dos elementos (padding), ou seja, não há espaço entre o conteúdo e a 
+    borda do elemento. */
+    padding: 0;
+    /* Remove qualquer margem externa dos elementos, ou seja, não há espaço entre os elementos (por exemplo, entre 
+    <div>, <p>, etc.). */
+    margin: 0;
+    /* Modifica o modelo de caixa (box model). O valor border-box faz com que o padding e a borda de um elemento 
+    sejam incluídos nas dimensões totais (largura e altura) do elemento, em vez de aumentar as dimensões do elemento.
+    Isso ajuda a controlar de forma mais previsível o tamanho dos elementos na página. */
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    /* Problema potencial: Se você for abrir o arquivo HTML em outro computador ou servidor, o caminho para a 
+    imagem pode não funcionar, pois ele aponta para um diretório local do seu computador. */
+    background-image: url('../img/Paisagem.jpg');
+    background-size: 1350px 600px;
+    /* Impede que a imagem de fundo se repita caso seja menor que a área visível da página. */
+    background-repeat: no-repeat;
+}

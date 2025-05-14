@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Mancuello</title>
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="img/Saturno.png">
+</head>
+
+<body>
+    <div id="modalSucesso" class="modal">
+        <div class="modal-conteudo">
+          <p>Cadastro realizado com sucesso!</p>
+          <button id="btnModalOK">OK</button>
+        </div>
+    </div>      
+
+    <div class="bg">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <!-- action="": Envia os dados para a mesma URL da página.
+    action="URL": Envia os dados para a URL especificada. -->
+    <form id="formCadastro" method="POST" action="/cadastro">
+
+        <div class="formulario">
+            <h3>Cadastro</h3>
+
+            <div class="linha" id="linha1">
+                <div class="cpf">
+                    <input type="text" name="cpf" id="inputCPF" placeholder="CPF" maxlength="14" required>
+                    <i class="fa-solid fa-check icone-validacao" id="rightCPF"></i>
+                    <i class="fa-solid fa-xmark icone-validacao" id="wrongCPF"></i>
+                    <p class="alertaCPF">Precisamos de um CPF válido.</p>
+                </div>
+
+                <div class="celular">
+                    <input type="text" name="celular" placeholder="Celular" id="inputCelular" required>
+                    <i class="fa-solid fa-check icone-validacao" id="rightCelular"></i>
+                    <i class="fa-solid fa-xmark icone-validacao" id="wrongCelular"></i>
+                    <p class="alertaCelular">Precisamos de um número de celular válido com DDD.</p>
+                </div>
+            </div>
+
+            <div class="nome">
+                <input type="text" name="nome" placeholder="Nome Completo" id="inputNome" required>
+                <i class="fa-solid fa-check icone-validacao" id="rightNome"></i>
+                <i class="fa-solid fa-xmark icone-validacao" id="wrongNome"></i>
+                <p class="alertaNome">Precisamos do seu nome completo.</p>
+            </div>
+            
+            <div class="email">
+                <input type="text" name="email" placeholder="E-mail" id="inputEmail">
+                <i class="fa-solid fa-check icone-validacao" id="rightEmail"></i>
+                <i class="fa-solid fa-xmark icone-validacao" id="wrongEmail"></i>
+                <p class="alertaEmail">Precisamos de um email válido.</p>
+            </div>
+
+            <div class="confEmail">
+                <input type="text" name="confEmail" placeholder="Confirmação de E-mail" id="inputConfEmail" required>
+                <i class="fa-solid fa-check icone-validacao" id="rightConfEmail"></i>
+                <i class="fa-solid fa-xmark icone-validacao" id="wrongConfEmail"></i>
+                <p class="alertaConfEmail">Precisamos de um email válido.</p>
+            </div>
+
+            <div class="linha" id="linha2">
+                <div class="senha">
+                    <input type="password" name="senha" placeholder="Nova Senha" id="inputSenha" maxlength="8" required>
+                    <i class="fa-solid fa-check icone-validacao" id="rightSenha"></i>
+                    <i class="fa-solid fa-xmark icone-validacao" id="wrongSenha"></i>
+                    <p class="alertaSenha">Precisamos de uma senha com 8 letras e/ou números.</p>
+                </div>
+
+                <div class="confSenha">
+                    <input type="password" name="confSenha" placeholder="Confirmação da Nova Senha" id="inputConfSenha" 
+                    maxlength="8" required>
+                    <i class="fa-solid fa-check icone-validacao" id="rightConfSenha"></i>
+                    <i class="fa-solid fa-xmark icone-validacao" id="wrongConfSenha"></i>
+                    <p class="alertaConfSenha">Precisamos de uma senha com 8 letras e/ou números.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="consent">
+                <p class="condicoes">Eu li, estou ciente das condições de tratamento dos meus dados pessoais e dou meu
+                    consentimento, quando aplicável, conforme descrito nessa Política de Privacidade.</p>
+            </div>
+            <p class="alertaCondicoes">Para prosseguir, você deve concordar com a política de privacidade.</p>
+
+            <button type="submit" id="btnSubmit" disabled>Enviar</button>
+        </div>
+    </form>
+    <script src="js/register.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,437 @@
+/* * (o seletor universal):
+Aplica as regras a todos os elementos da página.
+O * seleciona todos os elementos HTML, como <div>, <p>, <h1>, etc.
+*::after e *::before:
+Estes seletores atingem os pseudo-elementos ::after e ::before de todos os elementos.
+::after é um pseudo-elemento que é inserido após o conteúdo de um elemento, e ::before é inserido antes do conteúdo 
+de um elemento.
+Usando *::after e *::before, as regras serão aplicadas a todos os pseudo-elementos. */
+*,
+*::after,
+*::before {
+    /* Remove qualquer espaçamento interno dos elementos (padding), ou seja, não há espaço entre o conteúdo e a 
+    borda do elemento. */
+    padding: 0;
+    /* Remove qualquer margem externa dos elementos, ou seja, não há espaço entre os elementos (por exemplo, entre 
+    <div>, <p>, etc.). */
+    margin: 0;
+    /* Modifica o modelo de caixa (box model). O valor border-box faz com que o padding e a borda de um elemento 
+    sejam incluídos nas dimensões totais (largura e altura) do elemento, em vez de aumentar as dimensões do elemento.
+    Isso ajuda a controlar de forma mais previsível o tamanho dos elementos na página. */
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    /* Problema potencial: Se você for abrir o arquivo HTML em outro computador ou servidor, o caminho para a 
+    imagem pode não funcionar, pois ele aponta para um diretório local do seu computador. */
+    background-image: url('../img/Paisagem.jpg');
+    background-size: 1350px 600px;
+    /* Impede que a imagem de fundo se repita caso seja menor que a área visível da página. */
+    background-repeat: no-repeat;
+}
+
+/* Reset de estilo para todos os elementos dentro do formulário 
+A regra CSS form * seleciona todos os elementos dentro do formulário (form). O asterisco (*) é um seletor universal,
+o que significa que qualquer elemento filho dentro do formulário será afetado pelas propriedades definidas.*/
+form * {
+    font-family: "Poppins" sans-serif;
+    /* Define a fonte como Poppins (com fonte fallback) */
+    color: #ffffff;
+    /* Define a cor do texto como branca */
+    letter-spacing: 0.6px;
+    /* Adiciona um pequeno espaçamento entre as letras */
+    outline: none;
+    /* Remove a borda de foco (outline) nos campos ao clicar */
+    border: none;
+    /* Remove a borda padrão dos elementos */
+}
+
+/* Estilos para o próprio formulário */
+form {
+    background-color: rgba(255, 255, 255, 0.13);
+    /* Cor de fundo semitransparente (branco com opacidade) */
+    min-height: 550px;
+    /* Garante uma altura mínima */
+    transition: all 0.3s ease;
+    /* Suaviza a mudança de tamanho */
+    width: 600px;
+    /* Largura fixa do formulário */
+    backdrop-filter: blur(10px);
+    /* Aplica um desfoque no fundo do formulário */
+    position: absolute;
+    /* Coloca o formulário de forma absoluta na tela */
+    top: 50%;
+    /* Posiciona o formulário no meio da tela verticalmente */
+    left: 50%;
+    /* Posiciona o formulário no meio da tela horizontalmente */
+    /* Ajusta a posição do formulário para que ele esteja perfeitamente centralizado */
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    /* Borda fina e transparente ao redor do formulário */
+    box-shadow: 0 0 35px rgba(8, 7, 16, 0.6);
+    /* Adiciona uma sombra suave ao redor do formulário */
+    padding: 50px 35px;
+    /* Adiciona espaçamento interno no formulário */
+    border-radius: 10px;
+    /* Bordas arredondadas no formulário */
+    display: flex;
+    /* Torna o formulário um container flexível */
+    flex-direction: column;
+    /* Organiza os elementos em uma coluna */
+    justify-content: center;
+    /* Centraliza os itens verticalmente */
+    align-items: center;
+    /* Centraliza os itens horizontalmente */
+    margin-top: 0px;
+}
+
+/* Estilo para o título dentro do formulário */
+form h3 {
+    font-size: 32px;
+    /* Tamanho da fonte */
+    font-weight: 600;
+    /* Peso da fonte em negrito */
+    line-height: 42px;
+    /* Altura da linha */
+    text-align: center;
+    /* Alinha o texto do título no centro */
+    margin-top: -75px;
+    margin-bottom: 15px;
+}
+
+/* Estilos para os campos de entrada (inputs) */
+input {
+    display: block;
+    /* Faz com que o input ocupe toda a linha */
+    height: 50px;
+    /* Define a altura do campo */
+    width: 100%;
+    /* O campo ocupa toda a largura disponível */
+    background-color: rgba(255, 255, 255, 0.07);
+    /* Cor de fundo do campo com leve transparência */
+    border-radius: 3px;
+    /* Bordas arredondadas nos campos */
+    padding: 0 10px;
+    /* Preenchimento interno (espaço ao redor do texto) */
+    margin-top: 8px;
+    /* Espaço superior entre o label e o campo */
+    font-size: 15px;
+    /* Tamanho da fonte */
+    font-weight: 300;
+    /* Peso da fonte */
+    transition: margin-top 0.2s ease;
+}
+
+#inputCPF,
+#inputCelular,
+#inputSenha,
+#inputConfSenha {
+    width: 100%;
+    margin-top: 0;
+}
+
+.input-sem-erro {
+    margin-top: -1.5px;
+    margin-bottom: 5.5px;
+    /* Ajuste esse valor conforme o quanto quer mover */
+}
+
+.input-com-erro {
+    margin-top: -1px;
+    /* Ajuste esse valor conforme o quanto quer mover */
+    transition: transform 0.2s ease;
+}
+
+.icone-sem-erro {
+    transform: translateY(-6px);
+    /* Sobe o ícone */
+    transition: transform 0.2s ease;
+}
+
+.icone-com-erro {
+    transform: translateY(-1px);
+    /* Sobe o ícone */
+    transition: transform 0.2s ease;
+}
+
+.linhaCorrigida {
+    margin-top: -100px;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    /* Espaçamento entre os inputs */
+}
+
+#linha1 {
+    margin-bottom: 6.5px;
+}
+
+#linha2 {
+    margin-top: 10px;
+}
+
+#btnSubmit {
+    margin-top: -1.5px;
+}
+
+.nome {
+    margin-bottom: 7px;
+}
+
+/* Estilo para o texto de placeholder dentro dos campos */
+::placeholder {
+    color: rgb(216, 219, 221);
+    /* Cor suave para o texto de placeholder */
+}
+
+.checkbox-container {
+    display: flex;
+    /* Usando Flexbox para alinhar os itens em linha */
+    align-items: center;
+    /* Alinha verticalmente os itens */
+    gap: 10px;
+    /* Adiciona um pequeno espaçamento entre o checkbox e o texto */
+    margin-top: 8.5px;
+}
+
+.formulario {
+    margin-top: 50px;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    /* Tamanho personalizado para o checkbox */
+    height: 20px;
+    /* Tamanho personalizado para o checkbox */
+    margin-top: -38.5px;
+}
+
+.condicoes {
+    font-size: 14px;
+    /* Tamanho de fonte do texto */
+    line-height: 1.4;
+    /* Espaçamento entre as linhas do texto */
+    margin: 0;
+    /* Remove a margem do parágrafo */
+}
+
+.cpf,
+.celular,
+.nome,
+.email,
+.confEmail,
+.senha,
+.confSenha {
+    position: relative;
+    width: 100%;
+}
+
+.alertaCPF,
+.alertaCelular,
+.alertaNome,
+.alertaEmail,
+.alertaConfEmail,
+.alertaSenha,
+.alertaConfSenha {
+    display: none;
+    /* Inicialmente invisível */
+    color: orange;
+    font-size: 14px;
+    /* Tamanho de fonte do texto */
+    line-height: 1.4;
+    /* Espaçamento entre as linhas do texto */
+    margin: 0;
+    /* Remove a margem do parágrafo */
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#rightCPF,
+#wrongCPF,
+#rightCelular,
+#wrongCelular,
+#rightSenha,
+#wrongSenha,
+#rightConfSenha,
+#wrongConfSenha {
+    position: absolute;
+    display: none;
+    font-size: 25px;
+    margin-top: -36.5px;
+    margin-left: 225px;
+}
+
+#rightNome,
+#wrongNome,
+#rightEmail,
+#wrongEmail,
+#rightConfEmail,
+#wrongConfEmail {
+    position: absolute;
+    display: none;
+    font-size: 25px;
+    margin-top: -36.5px;
+    margin-left: 493px;
+}
+
+#rightCPF,
+#rightCelular,
+#rightNome,
+#rightEmail,
+#rightConfEmail,
+#rightSenha,
+#rightConfSenha {
+    color: green;
+}
+
+#wrongCPF,
+#wrongCelular,
+#wrongNome,
+#wrongEmail,
+#wrongConfEmail,
+#wrongSenha,
+#wrongConfSenha {
+    color: red;
+}
+
+.alertaCondicoes {
+    display: none;
+    /* Inicialmente invisível */
+    color: orange;
+    font-size: 14px;
+    /* Tamanho de fonte do texto */
+    line-height: 1.4;
+    /* Espaçamento entre as linhas do texto */
+    margin: 0;
+    /* Remove a margem do parágrafo */
+}
+
+/* Estilos para o botão de envio */
+button {
+    margin-top: 10px;
+    /* Espaço superior do botão */
+    width: 200px;
+    /* O botão ocupa toda a largura disponível */
+    color: #000000;
+    /* Cor do texto do botão */
+    background-color: #ffffff;
+    /* Cor de fundo do botão */
+    padding: 15px 0;
+    /* Preenchimento interno do botão */
+    font-size: 18px;
+    /* Tamanho da fonte */
+    font-weight: 600;
+    /* Peso da fonte (negrito) */
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    cursor: pointer;
+    /* Altera o cursor para uma mãozinha ao passar sobre o botão */
+    display: block;
+    margin: 10px auto 0 auto;
+    /* auto nas laterais centraliza */
+}
+
+/* Efeito de hover no botão 
+button:hover: Esse seletor aplica um estilo ao botão quando o evento hover ocorre, ou seja, quando o cursor do 
+mouse está sobre o botão. */
+button:hover {
+    /* Aqui, você está aplicando um gradiente linear como fundo do botão. A direção do gradiente é da esquerda para
+    a direita, indicada pela palavra-chave to right. */
+    background: linear-gradient(to right, #2f649c, #c7911e);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Estilos para o fundo (imagem de fundo) */
+.bg {
+    width: 430px;
+    /* Largura do fundo */
+    height: 480px;
+    /* Altura do fundo */
+    position: absolute;
+    /* Posição absoluta para o fundo */
+    top: 50%;
+    /* Posiciona o fundo verticalmente no centro */
+    left: 50%;
+    /* Posiciona o fundo horizontalmente no centro */
+    transform: translate(-50%, -50%);
+    /* Ajusta o fundo para centralizá-lo perfeitamente */
+}
+
+/* Estilos para as formas circulares no fundo
+Este seletor aplica as regras de estilo somente ao primeiro filho do elemento com a classe .shape. Ou seja, se 
+houver múltiplos elementos com a classe .shape, o estilo será aplicado somente ao primeiro deles. */
+.bg .shape {
+    height: 200px;
+    /* Altura da forma */
+    width: 200px;
+    /* Largura da forma */
+    position: absolute;
+    /* Posição absoluta para as formas */
+    border-radius: 50%;
+    /* Faz a forma ser um círculo */
+}
+
+/* Primeira forma (círculo) no fundo */
+.shape:first-child {
+    background: linear-gradient(#204bb8, #7eb0e5);
+    /* Gradiente de cor */
+    left: -80px;
+    top: -80px;
+    /* Posição relativa à posição do fundo */
+    filter: blur(10px);
+    /* Aplica desfoque à forma */
+}
+
+/* Segunda forma (círculo) no fundo */
+.shape:last-child {
+    background: linear-gradient(#d08b31, #af7113);
+    /* Gradiente de cor */
+    right: -30px;
+    bottom: -80px;
+    /* Posição relativa à posição do fundo */
+    filter: blur(10px);
+    /* Aplica desfoque à forma */
+}
+
+.modal {
+    display: none;
+    /* Oculta por padrão */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-conteudo {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-conteudo button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
