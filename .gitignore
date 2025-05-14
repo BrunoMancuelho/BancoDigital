@@ -1,0 +1,15 @@
+# Ignorar o arquivo .env para não expor credenciais
+.env
+
+# Ignorar a pasta node_modules (dependências do projeto)
+node_modules/
+
+# Ignorar logs e caches
+*.log
+*.cache
+
+# Abra seu terminal e execute os seguintes comandos para garantir que os arquivos sejam ignorados corretamente:
+# git status
+# Isso mostrará todos os arquivos que foram alterados ou adicionados no repositório. Se o .env aparecer, execute:
+# git rm --cached .env
+# Isso remove o arquivo .env do controle de versão do Git, mas mantém ele no seu diretório local.
