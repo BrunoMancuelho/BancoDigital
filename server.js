@@ -18,17 +18,14 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Conexão com MongoDB
-const client = new MongoClient(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+const client = new MongoClient(process.env.MONGO_URI);
 
 let db;
 
 async function connectDB() {
   try {
     await client.connect();
-    const dbName = process.env.MONGO_URI.split('/').pop(); // extrai "banco_digital"
+    const dbName = process.env.DB_NAME;
     db = client.db(dbName);
     console.log(`Conectado ao MongoDB - Banco: ${dbName}`);
   } catch (error) {
@@ -46,12 +43,11 @@ app.post('/cadastro', async (req, res) => {
 
     const dados = {
       nome,
-      cpf: cpf.replace(/\D/g, ''), // remove pontuação
+      cpf: cpf.replace(/\D/g, ''),
       celular,
       email,
       senha
     };
-    console.log(dados);  // Verifique o conteúdo enviado
 
     const colecao = db.collection("cadastros");
     await colecao.insertOne(dados);
@@ -67,9 +63,8 @@ app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
 
-// Rota de login (validação de CPF e senha)
+// Rota de login
 app.post('/login', async (req, res) => {
-  console.log(req.body); // Verifique o conteúdo da requisição
   try {
     const { cpf, senha } = req.body;
     const colecao = db.collection("cadastros");
