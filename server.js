@@ -20,7 +20,6 @@ app.use(express.static('public'));
 
 // Conexão com MongoDB
 const client = new MongoClient(process.env.MONGO_URI);
-
 let db;
 
 async function connectDB() {
@@ -28,9 +27,9 @@ async function connectDB() {
     await client.connect();
     const dbName = process.env.DB_NAME;
     db = client.db(dbName);
-    console.log(`Conectado ao MongoDB - Banco: ${dbName}`);
+    console.log(`✅ Conectado ao MongoDB - Banco: ${dbName}`);
   } catch (error) {
-    console.error("Erro ao conectar ao MongoDB:", error);
+    console.error("❌ Erro ao conectar ao MongoDB:", error);
     process.exit(1);
   }
 }
@@ -42,9 +41,19 @@ app.post('/cadastro', async (req, res) => {
   try {
     const { nome, cpf, celular, email, senha } = req.body;
 
-    // Validação básica dos campos
+    // Validação básica
     if (!nome || !cpf || !celular || !email || !senha) {
-      return res.status(400).send("Todos os campos são obrigatórios.");
+      return res.status(400).send("⚠️ Todos os campos são obrigatórios.");
+    }
+
+    const colecao = db.collection("cadastros");
+
+    // Verifica se CPF já existe
+    const cpfFormatado = cpf.replace(/\D/g, '');
+    const usuarioExistente = await colecao.findOne({ cpf: cpfFormatado });
+
+    if (usuarioExistente) {
+      return res.status(409).send("⚠️ CPF já cadastrado.");
     }
 
     // Criptografa a senha
@@ -52,18 +61,17 @@ app.post('/cadastro', async (req, res) => {
 
     const dados = {
       nome,
-      cpf: cpf.replace(/\D/g, ''),
+      cpf: cpfFormatado,
       celular,
       email,
       senha: senhaHash
     };
 
-    const colecao = db.collection("cadastros");
     await colecao.insertOne(dados);
 
-    res.send("Cadastro realizado com sucesso!");
+    res.send("✅ Cadastro realizado com sucesso!");
   } catch (err) {
-    console.error(err);
+    console.error("❌ Erro no cadastro:", err);
     res.status(500).send("Erro ao cadastrar.");
   }
 });
@@ -74,25 +82,25 @@ app.post('/login', async (req, res) => {
     const { cpf, senha } = req.body;
 
     if (!cpf || !senha) {
-      return res.status(400).json({ sucesso: false, mensagem: "CPF e senha são obrigatórios." });
+      return res.status(400).json({ sucesso: false, mensagem: "⚠️ CPF e senha são obrigatórios." });
     }
 
+    const cpfFormatado = cpf.replace(/\D/g, '');
     const colecao = db.collection("cadastros");
-    const usuario = await colecao.findOne({
-      cpf: cpf.replace(/\D/g, '')
-    });
+    const usuario = await colecao.findOne({ cpf: cpfFormatado });
 
     if (usuario && await bcrypt.compare(senha, usuario.senha)) {
-      res.status(200).json({ sucesso: true, mensagem: 'Login realizado com sucesso!' });
+      res.status(200).json({ sucesso: true, mensagem: "✅ Login realizado com sucesso!" });
     } else {
-      res.status(401).json({ sucesso: false, mensagem: 'CPF ou senha inválidos.' });
+      res.status(401).json({ sucesso: false, mensagem: "❌ CPF ou senha inválidos." });
     }
   } catch (error) {
-    console.error("Erro na autenticação:", error);
-    res.status(500).json({ sucesso: false, mensagem: 'Erro no servidor.' });
+    console.error("❌ Erro na autenticação:", error);
+    res.status(500).json({ sucesso: false, mensagem: "Erro no servidor." });
   }
 });
 
+// Inicializa o servidor
 app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`🚀 Servidor rodando em http://localhost:${port}`);
 });
