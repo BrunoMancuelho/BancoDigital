@@ -388,7 +388,7 @@ document.getElementById('formCadastro').addEventListener('submit', function (eve
         confSenha
     };
 
-    fetch('/cadastro', {
+    fetch('https://bancodigital-nhoe.onrender.com/cadastro', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
