@@ -41,23 +41,29 @@ async function connectDB() {
 connectDB();
 
 // Rota de cadastro
+// Rota de cadastro com debug detalhado
 app.post('/cadastro', async (req, res) => {
-  console.log("📦 Dados recebidos no cadastro:", req.body);
+  console.log("📦 Dados recebidos:", req.body);
+
   try {
     const { nome, cpf, celular, email, senha } = req.body;
 
     if (!nome || !cpf || !celular || !email || !senha) {
+      console.warn("⚠️ Campos ausentes");
       return res.status(400).send("⚠️ Todos os campos são obrigatórios.");
     }
 
     const colecao = db.collection("cadastros");
     const cpfFormatado = cpf.replace(/\D/g, '');
-    const usuarioExistente = await colecao.findOne({ cpf: cpfFormatado });
+    console.log("🔎 Verificando CPF:", cpfFormatado);
 
+    const usuarioExistente = await colecao.findOne({ cpf: cpfFormatado });
     if (usuarioExistente) {
+      console.warn("⚠️ CPF já cadastrado:", cpfFormatado);
       return res.status(409).send("⚠️ CPF já cadastrado.");
     }
 
+    console.log("🔐 Criptografando senha...");
     const senhaHash = await bcrypt.hash(senha, 10);
 
     const dados = {
@@ -68,8 +74,10 @@ app.post('/cadastro', async (req, res) => {
       senha: senhaHash
     };
 
+    console.log("📤 Inserindo no banco:", dados);
     await colecao.insertOne(dados);
 
+    console.log("✅ Cadastro realizado com sucesso");
     res.send("✅ Cadastro realizado com sucesso!");
   } catch (err) {
     console.error("❌ Erro no cadastro:", err);
