@@ -42,6 +42,7 @@ connectDB();
 
 // Rota de cadastro
 app.post('/cadastro', async (req, res) => {
+  console.log("📦 Dados recebidos no cadastro:", req.body);
   try {
     const { nome, cpf, celular, email, senha } = req.body;
 
