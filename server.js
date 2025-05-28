@@ -4,20 +4,20 @@
 // Pressione Ctrl + C no terminal para desligar a conexão com o banco de dados.
 // Crie uma pasta chamada "data" no Disco Local e dentro dessa pasta crie outra pasta chamada "db".
 // C:\data\db
-const cors = require('cors');
-app.use(cors());
-
-
 require('dotenv').config();
+
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 
+// Inicializa o app
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -45,14 +45,11 @@ app.post('/cadastro', async (req, res) => {
   try {
     const { nome, cpf, celular, email, senha } = req.body;
 
-    // Validação básica
     if (!nome || !cpf || !celular || !email || !senha) {
       return res.status(400).send("⚠️ Todos os campos são obrigatórios.");
     }
 
     const colecao = db.collection("cadastros");
-
-    // Verifica se CPF já existe
     const cpfFormatado = cpf.replace(/\D/g, '');
     const usuarioExistente = await colecao.findOne({ cpf: cpfFormatado });
 
@@ -60,7 +57,6 @@ app.post('/cadastro', async (req, res) => {
       return res.status(409).send("⚠️ CPF já cadastrado.");
     }
 
-    // Criptografa a senha
     const senhaHash = await bcrypt.hash(senha, 10);
 
     const dados = {
