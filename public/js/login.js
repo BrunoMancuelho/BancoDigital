@@ -227,7 +227,7 @@ botaoEntrar.addEventListener('click', async function (event) {
 
     try {
         // Envia a requisição POST com CPF e senha
-        const resposta = await fetch('/login', {
+        const resposta = await fetch('https://bancodigital-nhoe.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

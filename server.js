@@ -1,9 +1,13 @@
-// npm install mongodb dotenv express body-parser mongoose
+// npm install mongodb dotenv express body-parser mongoose bcrypt cors
 // node server.js
 // http://localhost:3000/
 // Pressione Ctrl + C no terminal para desligar a conexão com o banco de dados.
 // Crie uma pasta chamada "data" no Disco Local e dentro dessa pasta crie outra pasta chamada "db".
 // C:\data\db
+const cors = require('cors');
+app.use(cors());
+
+
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
